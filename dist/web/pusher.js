@@ -2215,7 +2215,7 @@ var pusher_authorizer_PusherAuthorizer = (function () {
         this.authOptions = options.auth || {};
     }
     PusherAuthorizer.prototype.composeQuery = function (socketId) {
-        return { socketId: socketId, channelName: this.channel.name };
+        return JSON.stringify({ socketId: socketId, channelName: this.channel.name });
     };
     PusherAuthorizer.prototype.authorize = function (socketId, callback) {
         PusherAuthorizer.authorizers =
