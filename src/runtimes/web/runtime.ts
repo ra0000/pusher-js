@@ -90,11 +90,15 @@ var Runtime: Browser = {
   },
 
   createXHR(): Ajax {
-    if (this.getXHRAPI()) {
-      return this.createXMLHttpRequest();
-    } else {
-      return this.createMicrosoftXHR();
-    }
+    const xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    return xhr;
+
+//    if (this.getXHRAPI()) {
+//      return this.createXMLHttpRequest();
+//    } else {
+//      return this.createMicrosoftXHR();
+//    }
   },
 
   createXMLHttpRequest(): Ajax {

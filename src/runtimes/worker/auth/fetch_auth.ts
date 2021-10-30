@@ -16,6 +16,7 @@ var fetchAuth: AuthTransport = function(
   }
 
   var body = this.composeQuery(socketId);
+
   var request = new Request(this.options.authEndpoint, {
     headers,
     body: JSON.stringify(body),

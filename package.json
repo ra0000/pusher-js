@@ -2,9 +2,9 @@
   "name": "pusher-js",
   "version": "7.0.3",
   "description": "Pusher Channels JavaScript library for browsers, React Native, NodeJS and web workers",
-  "main": "src/node/pusher.js",
-  "browser": "src/web/pusher.js",
-  "react-native": "src/react-native/pusher.js",
+  "main": "dist/node/pusher.js",
+  "browser": "dist/web/pusher.js",
+  "react-native": "dist/react-native/pusher.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --config .prettierrc --write 'src/**/*.ts' 'webpack/**/*.js'",

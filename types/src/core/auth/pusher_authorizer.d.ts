@@ -8,6 +8,9 @@ export default class PusherAuthorizer implements Authorizer {
     options: AuthorizerOptions;
     authOptions: AuthOptions;
     constructor(channel: Channel, options: AuthorizerOptions);
-    composeQuery(socketId: string): string;
+    composeQuery(socketId: string): {
+        socketId: any;
+        channelName: any;
+    };
     authorize(socketId: string, callback: AuthorizerCallback): void;
 }

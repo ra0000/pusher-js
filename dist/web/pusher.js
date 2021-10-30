@@ -558,6 +558,7 @@ module.exports = __webpack_require__(3).default;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
 // CONCATENATED MODULE: ./src/runtimes/web/dom/script_receiver_factory.ts
@@ -2214,18 +2215,7 @@ var pusher_authorizer_PusherAuthorizer = (function () {
         this.authOptions = options.auth || {};
     }
     PusherAuthorizer.prototype.composeQuery = function (socketId) {
-        var query = 'socket_id=' +
-            encodeURIComponent(socketId) +
-            '&channel_name=' +
-            encodeURIComponent(this.channel.name);
-        for (var i in this.authOptions.params) {
-            query +=
-                '&' +
-                    encodeURIComponent(i) +
-                    '=' +
-                    encodeURIComponent(this.authOptions.params[i]);
-        }
-        return query;
+        return { socketId: socketId, channelName: this.channel.name };
     };
     PusherAuthorizer.prototype.authorize = function (socketId, callback) {
         PusherAuthorizer.authorizers =
@@ -4004,12 +3994,9 @@ var Runtime = {
         }
     },
     createXHR: function () {
-        if (this.getXHRAPI()) {
-            return this.createXMLHttpRequest();
-        }
-        else {
-            return this.createMicrosoftXHR();
-        }
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        return xhr;
     },
     createXMLHttpRequest: function () {
         var Constructor = this.getXHRAPI();
