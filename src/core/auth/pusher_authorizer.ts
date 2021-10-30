@@ -32,20 +32,22 @@ export default class PusherAuthorizer implements Authorizer {
     this.authOptions = options.auth || {};
   }
 
-  composeQuery(socketId: string): string {
-    var query =
-      'socket_id=' +
-      encodeURIComponent(socketId) +
-      '&channel_name=' +
-      encodeURIComponent(this.channel.name);
+  composeQuery(socketId: string): {socketId, channelName} {
+//     var query =
+//       'socket_id=' +
+//       encodeURIComponent(socketId) +
+//       '&channel_name=' +
+//       encodeURIComponent(this.channel.name);
 
-    for (var i in this.authOptions.params) {
-      query +=
-        '&' +
-        encodeURIComponent(i) +
-        '=' +
-        encodeURIComponent(this.authOptions.params[i]);
-    }
+//     for (var i in this.authOptions.params) {
+//       query +=
+//         '&' +
+//         encodeURIComponent(i) +
+//         '=' +
+//         encodeURIComponent(this.authOptions.params[i]);
+//     }
+    
+    const query = {socketId, channelName: this.channel.name}
 
     return query;
   }
