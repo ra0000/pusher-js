@@ -9,7 +9,7 @@ var fetchAuth: AuthTransport = function(
   callback: AuthorizerCallback
 ) {
   var headers = new Headers();
-  headers.set('Content-Type', 'application/x-www-form-urlencoded');
+  headers.set('Content-Type', 'application/json');
 
   for (var headerName in this.authOptions.headers) {
     headers.set(headerName, this.authOptions.headers[headerName]);
@@ -18,7 +18,7 @@ var fetchAuth: AuthTransport = function(
   var body = this.composeQuery(socketId);
   var request = new Request(this.options.authEndpoint, {
     headers,
-    body,
+    body: JSON.stringify(body),
     credentials: 'same-origin',
     method: 'POST'
   });
